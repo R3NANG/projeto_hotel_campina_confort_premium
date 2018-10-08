@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <string.h>
+#include "login.h"
 
 main() {
-	printf("Teste");
+	login();
+	printf("\nTeste 2");
 }
