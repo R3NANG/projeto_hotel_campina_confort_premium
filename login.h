@@ -18,7 +18,7 @@ void login() {
 	
 		if(strcmp(logindefinido, loginrecebido) == 0) {
 			if(strcmp(senhadefinida, senharecebida) == 0) {
-				printf("Logado com Sucesso!");
+				printf("Logado com Sucesso!\n\n");
 			}
 			else printf("Login ou Senha Incorreto!\n");
 		}
