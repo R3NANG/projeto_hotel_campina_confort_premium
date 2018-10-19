@@ -14,9 +14,9 @@ int dados() {
 	fprintf(p_contrato, "Nome: ");
 	fprintf(p_contrato, "%s", nome);
 	printf("Digite o CPF do Hospede (ex: 952.268.050-80):\n");
-	char cpf[15];
+	char cpf[16];
 	setbuf(stdin, NULL);
-	fgets(cpf, 15, stdin);
+	fgets(cpf, 16, stdin);
 	fprintf(p_contrato, "CPF: ");
 	fprintf(p_contrato, "%s", cpf);
 	printf("Digite o Endereco de Residencia do Hospede:\n");
@@ -38,16 +38,16 @@ int dados() {
 	fprintf(p_contrato, "Numero do Cartao (CVV): ");
 	fprintf(p_contrato, "%s", numeroc);
 	printf("Digite a Validade do Cartao do Hospede (ex: 13/08/2019):\n");
-	char validade[11];
+	char validade[15];
 	setbuf(stdin, NULL);
-	fgets(validade, 11, stdin);
+	fgets(validade, 15, stdin);
 	fprintf(p_contrato, "Validade do Cartao: ");
 	fprintf(p_contrato, "%s", validade);
 	printf("Digite o Codigo de Seguranca do Cartao do Hospede:\n");
-	int codigodes;
-	scanf("%d", &codigodes);
-	fprintf(p_contrato, "Codigo de Seguranca: ");
-	fprintf(p_contrato, "%d", codigodes);
-	fprintf(p_contrato, "\n");
+	char codigodes[10];
+	setbuf(stdin, NULL);
+	fgets(codigodes, 10, stdin);
+	fprintf(p_contrato, "Codigo de Seguranca do Cartao: ");
+	fprintf(p_contrato, "%s", codigodes);
 	fclose(p_contrato);
 }

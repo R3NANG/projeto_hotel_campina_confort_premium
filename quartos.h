@@ -1,4 +1,15 @@
+FILE *p_qntdequartos;
+
 float quartos(int altatemp) {
+	p_qntdequartos = fopen("qntdequartos.txt", "r");
+	if(p_qntdequartos == NULL) {
+		printf("\nFalha na Criacao do Contrato!");
+		system("pause");
+		return 0;
+	}
+	int p, ls, ld, lt, es, ed, et;
+	fscanf(p_qntdequartos, "%d %d %d %d %d %d %d", &p, &ls, &ld, &lt, &es, &ed, &et);
+	fclose(p_qntdequartos);
 	int quantidadeDeQuartos, op1, op2, cont;
 	float aux1 = 0, aux2 = 0, aux3 = 0, aux4 = 0, aux5 = 0, aux6 = 0, aux7 = 0;
 	p_contrato = fopen("contratos.txt", "a");
@@ -28,14 +39,36 @@ float quartos(int altatemp) {
 				
 			switch(op1) {
 				case 1:
-					printf("\nAdicionado ao Contrato!\n");
 					if(altatemp == 1) {
-						aux1 = 1200 * 1.25;
+						if(p > 0) {
+							printf("Adicionado ao Contrato!\n");
+							aux1 = 1200 * 1.25;
+							p--;
+							fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux1);
+							p_qntdequartos = fopen("qntdequartos.txt", "w");
+							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+							fclose(p_qntdequartos);
+						}
+						else {
+							printf("Quarto Indisponivel.\n");
+							cont--;
+						}
 					}
 					if(altatemp == 2) {
-						aux1 = 1200;
+						if(p > 0) {
+							printf("Adicionado ao Contrato!\n");
+							aux1 = 1200;
+							p--;
+							fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux1);
+							p_qntdequartos = fopen("qntdequartos.txt", "w");
+							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+							fclose(p_qntdequartos);
+						}
+						else {
+							printf("Quarto Indisponivel.\n");
+							cont--;
+						}
 					}
-					fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux1);
 					break;
 				case 2:
 					do {
@@ -44,29 +77,74 @@ float quartos(int altatemp) {
 						scanf("%d", &op2);
 						switch(op2) {
 							case 1:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux2 = 520 * 1.25;
+									if(ls > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux2 = 520 * 1.25;
+										ls--;
+										fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux2);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux2 = 520;
+									if(ls > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux2 = 520;
+										ls--;
+										fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux2);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux2);
 								break;
 							case 2:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux2 = 520 * 1.25;
+									if(ls > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux2 = 520 * 1.25;
+										ls--;
+										fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux2);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux2 = 520;
+									if(ls > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux2 = 520;
+										ls--;
+										fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux2);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux2);
 								break;
 							default:
 								printf("\nOpcao Invalida.\n");
 								system("pause");
 								system("cls");
+								break;
 						}
 					} while(op2 < 1 || op2 > 2);
 					break;
@@ -77,29 +155,74 @@ float quartos(int altatemp) {
 						scanf("%d", &op2);
 						switch(op2) {
 							case 1:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux3 = 570 * 1.25;
+									if(ld > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux3 = 570 * 1.25;
+										ld--;
+										fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux3);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux3 = 570;
+									if(ld > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux3 = 570;
+										ld--;
+										fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux3);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux3);
 								break;
 							case 2:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux3 = 570 * 1.25;
+									if(ld > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux3 = 570 * 1.25;
+										ld--;
+										fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux3);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux3 = 570;
+									if(ld > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux3 = 570;
+										ld--;
+										fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux3);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux3);
 								break;
 							default:
 								printf("\nOpcao Invalida.\n");
 								system("pause");
 								system("cls");
+								break;
 						}
 					} while(op2 < 1 || op2 > 2);
 					break;
@@ -110,29 +233,74 @@ float quartos(int altatemp) {
 						scanf("%d", &op2);
 						switch(op2) {
 							case 1:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux4 = 620 * 1.25;
+									if(lt > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux4 = 620 * 1.25;
+										lt--;
+										fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux4);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux4 = 620;
+									if(lt > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux4 = 620;
+										lt--;
+										fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux4);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux4);
 								break;
 							case 2:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux4 = 620 * 1.25;
+									if(lt > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux4 = 620 * 1.25;
+										lt--;
+										fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux4);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux4 = 620;
+									if(lt > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux4 = 620;
+										lt--;
+										fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux4);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux4);
 								break;
 							default:
 								printf("\nOpcao Invalida.\n");
 								system("pause");
 								system("cls");
+								break;
 						}
 					} while(op2 < 1 || op2 > 2);
 					break;
@@ -143,29 +311,74 @@ float quartos(int altatemp) {
 						scanf("%d", &op2);
 						switch(op2) {
 							case 1:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux5 = 360 * 1.25;
+									if(es > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux5 = 360 * 1.25;
+										es--;
+										fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux5);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux5 = 360;
+									if(es > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux5 = 360;
+										es--;
+										fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux5);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux5);
 								break;
 							case 2:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux5 = 360 * 1.25;
+									if(es > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux5 = 360 * 1.25;
+										es--;
+										fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux5);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux5 = 360;
+									if(es > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux5 = 360;
+										es--;
+										fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux5);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux5);
 								break;
 							default:
 								printf("\nOpcao Invalida.\n");
 								system("pause");
 								system("cls");
+								break;
 						}
 					} while(op2 < 1 || op2 > 2);
 					break;
@@ -176,47 +389,115 @@ float quartos(int altatemp) {
 						scanf("%d", &op2);
 						switch(op2) {
 							case 1:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux6 = 385 * 1.25;
+									if(ed > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux6 = 385 * 1.25;
+										ed--;
+										fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux6);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux6 = 385;
+									if(ed > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux6 = 385;
+										ed--;
+										fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux6);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux6);
 								break;
 							case 2:
-								printf("\nAdicionado ao Contrato!\n");
 								if(altatemp == 1) {
-									aux6 = 385 * 1.25;
+									if(ed > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux6 = 385 * 1.25;
+										ed--;
+										fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux6);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
 								if(altatemp == 2) {
-									aux6 = 385;
+									if(ed > 0) {
+										printf("Adicionado ao Contrato!\n");
+										aux6 = 385;
+										ed--;
+										fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux6);
+										p_qntdequartos = fopen("qntdequartos.txt", "w");
+										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+										fclose(p_qntdequartos);
+									}
+									else {
+										printf("Quarto Indisponivel.\n");
+										cont--;
+									}
 								}
-								fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux6);
 								break;
 							default:
 								printf("\nOpcao Invalida.\n");
 								system("pause");
 								system("cls");
+								break;
 						}
 					} while(op2 < 1 || op2 > 2);
 					break;
 				case 7:
-					printf("\nAdicionado ao Contrato!\n");
 					if(altatemp == 1) {
-						aux7 = 440 * 1.25;
+						if(et > 0) {
+							printf("Adicionado ao Contrato!\n");
+							aux7 = 440 * 1.25;
+							et--;
+							fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux7);
+							p_qntdequartos = fopen("qntdequartos.txt", "w");
+							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+							fclose(p_qntdequartos);
+						}
+						else {
+							printf("Quarto Indisponivel.\n");
+							cont--;
+						}
 					}
 					if(altatemp == 2) {
-						aux7 = 440;
+						if(et > 0) {
+							printf("Adicionado ao Contrato!\n");
+							aux7 = 440;
+							et--;
+							fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux7);
+							p_qntdequartos = fopen("qntdequartos.txt", "w");
+							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
+							fclose(p_qntdequartos);
+						}
+						else {
+							printf("Quarto Indisponivel.\n");
+							cont--;
+						}
 					}
-					fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux7);
 					break;
 				default:
 					printf("\nOpcao Invalida.\n");
 					cont--;
 					system("pause");
 					system("cls");
+					break;
 			}
 			}
 		} else {

@@ -42,6 +42,7 @@ main() {
 							printf("Opcao Invalida.\n");
 							system("pause");
 							system("cls");
+							break;
 					}
 				} while(altatemp < 1 || altatemp > 2);
 				fclose(p_contrato);
@@ -52,7 +53,7 @@ main() {
 					system("pause");
 					return 0;
 				}
-				fprintf(p_contrato, "Soma dos gastos dos quartos: %.2f\n", soma1);
+				fprintf(p_contrato, "Soma dos gastos dos quartos: %.2f\n\n", soma1);
 				fclose(p_contrato);
 				break;
 			case 2:
