@@ -18,6 +18,12 @@ float quartos(int altatemp) {
 		system("pause");
 		return 0;
 	}
+	p_qntdequartos = fopen("qntdequartos.txt", "w");
+	if(p_qntdequartos == NULL) {
+		printf("\nFalha na Quantidade de Quartos!");
+		system("pause");
+		return 0;
+	}
 	
 	do {
 		printf("Digite a Quantidade de Quartos: ");
@@ -26,6 +32,8 @@ float quartos(int altatemp) {
 		if(quantidadeDeQuartos > 0) {
 			for(cont = 1; cont <= quantidadeDeQuartos; cont++) {
 			printf("\nDigite o Tipo do Quarto %d\n", cont);
+			printf("Quantidade de Quartos Disponiveis:\n");
+			printf("| Presidencial: %d | Luxo Simples: %d | Luxo Duplo: %d | Luxo Triplo: %d |\n| Executivo Simples: %d | Executivo Duplo: %d | Executivo Triplo: %d |\n", p, ls, ld, lt, es, ed, et);
 			printf("Tipos de Quartos:\n");
 			printf("1 - Presidencial.\n");
 			printf("2 - Luxo Simples.\n");
@@ -45,9 +53,7 @@ float quartos(int altatemp) {
 							aux1 = 1200 * 1.25;
 							p--;
 							fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux1);
-							p_qntdequartos = fopen("qntdequartos.txt", "w");
 							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-							fclose(p_qntdequartos);
 						}
 						else {
 							printf("Quarto Indisponivel.\n");
@@ -60,9 +66,7 @@ float quartos(int altatemp) {
 							aux1 = 1200;
 							p--;
 							fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux1);
-							p_qntdequartos = fopen("qntdequartos.txt", "w");
 							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-							fclose(p_qntdequartos);
 						}
 						else {
 							printf("Quarto Indisponivel.\n");
@@ -83,9 +87,7 @@ float quartos(int altatemp) {
 										aux2 = 520 * 1.25;
 										ls--;
 										fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux2);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -98,9 +100,7 @@ float quartos(int altatemp) {
 										aux2 = 520;
 										ls--;
 										fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux2);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -115,9 +115,7 @@ float quartos(int altatemp) {
 										aux2 = 520 * 1.25;
 										ls--;
 										fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux2);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -130,9 +128,7 @@ float quartos(int altatemp) {
 										aux2 = 520;
 										ls--;
 										fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux2);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -161,9 +157,7 @@ float quartos(int altatemp) {
 										aux3 = 570 * 1.25;
 										ld--;
 										fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux3);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -176,9 +170,7 @@ float quartos(int altatemp) {
 										aux3 = 570;
 										ld--;
 										fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux3);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -193,9 +185,7 @@ float quartos(int altatemp) {
 										aux3 = 570 * 1.25;
 										ld--;
 										fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux3);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -208,9 +198,7 @@ float quartos(int altatemp) {
 										aux3 = 570;
 										ld--;
 										fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux3);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -239,9 +227,7 @@ float quartos(int altatemp) {
 										aux4 = 620 * 1.25;
 										lt--;
 										fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux4);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -254,9 +240,7 @@ float quartos(int altatemp) {
 										aux4 = 620;
 										lt--;
 										fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux4);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -271,9 +255,7 @@ float quartos(int altatemp) {
 										aux4 = 620 * 1.25;
 										lt--;
 										fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux4);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -286,9 +268,7 @@ float quartos(int altatemp) {
 										aux4 = 620;
 										lt--;
 										fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux4);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -317,9 +297,7 @@ float quartos(int altatemp) {
 										aux5 = 360 * 1.25;
 										es--;
 										fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux5);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -332,9 +310,7 @@ float quartos(int altatemp) {
 										aux5 = 360;
 										es--;
 										fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux5);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -349,9 +325,7 @@ float quartos(int altatemp) {
 										aux5 = 360 * 1.25;
 										es--;
 										fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux5);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -364,9 +338,7 @@ float quartos(int altatemp) {
 										aux5 = 360;
 										es--;
 										fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux5);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -395,9 +367,7 @@ float quartos(int altatemp) {
 										aux6 = 385 * 1.25;
 										ed--;
 										fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux6);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -410,9 +380,7 @@ float quartos(int altatemp) {
 										aux6 = 385;
 										ed--;
 										fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux6);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -427,9 +395,7 @@ float quartos(int altatemp) {
 										aux6 = 385 * 1.25;
 										ed--;
 										fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux6);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -442,9 +408,7 @@ float quartos(int altatemp) {
 										aux6 = 385;
 										ed--;
 										fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux6);
-										p_qntdequartos = fopen("qntdequartos.txt", "w");
 										fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-										fclose(p_qntdequartos);
 									}
 									else {
 										printf("Quarto Indisponivel.\n");
@@ -467,9 +431,7 @@ float quartos(int altatemp) {
 							aux7 = 440 * 1.25;
 							et--;
 							fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux7);
-							p_qntdequartos = fopen("qntdequartos.txt", "w");
 							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-							fclose(p_qntdequartos);
 						}
 						else {
 							printf("Quarto Indisponivel.\n");
@@ -482,9 +444,7 @@ float quartos(int altatemp) {
 							aux7 = 440;
 							et--;
 							fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux7);
-							p_qntdequartos = fopen("qntdequartos.txt", "w");
 							fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
-							fclose(p_qntdequartos);
 						}
 						else {
 							printf("Quarto Indisponivel.\n");
@@ -506,6 +466,7 @@ float quartos(int altatemp) {
 			system("cls");
 		}
 	} while(quantidadeDeQuartos < 1);
+	fclose(p_qntdequartos);
 	fclose(p_contrato);
 	return aux1 + aux2 + aux3 + aux4 + aux5 + aux6 + aux7;
 }

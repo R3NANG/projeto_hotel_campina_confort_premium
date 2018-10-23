@@ -50,4 +50,5 @@ int dados() {
 	fprintf(p_contrato, "Codigo de Seguranca do Cartao: ");
 	fprintf(p_contrato, "%s", codigodes);
 	fclose(p_contrato);
+	printf("Adicionado ao Contrato!\n");
 }
