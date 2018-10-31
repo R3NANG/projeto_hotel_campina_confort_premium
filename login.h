@@ -8,6 +8,7 @@ void login() {
 	char senharecebida[TAM2];
 	
 	do {
+		cabecalho();
 		printf("Pressione qualquer tecla para inserir informacoes de Login e Senha.\n");
 		system("pause");
 		system("cls");
@@ -18,10 +19,17 @@ void login() {
 	
 		if(strcmp(logindefinido, loginrecebido) == 0) {
 			if(strcmp(senhadefinida, senharecebida) == 0) {
-				printf("Logado com Sucesso!\n\n");
+				printf("Logado com Sucesso!\n");
+				system("pause");
 			}
-			else printf("Login ou Senha Incorreto!\n");
+			else {
+				printf("Login ou Senha Incorreto!\n");
+				system("pause");
+			}
 		}
-		else printf("Login ou Senha Incorreto!\n");
+		else {
+			printf("Login ou Senha Incorreto!\n");
+			system("pause");
+		}
 	} while((strcmp(logindefinido, loginrecebido) != 0 || strcmp(senhadefinida, senharecebida) != 0));
 }

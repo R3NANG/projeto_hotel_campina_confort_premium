@@ -49,6 +49,12 @@ int dados() {
 	fgets(codigodes, 10, stdin);
 	fprintf(p_contrato, "Codigo de Seguranca do Cartao: ");
 	fprintf(p_contrato, "%s", codigodes);
+	printf("Digite a Data Inicial da Hospedagem do Hospede (ex: 13/03/2019):\n");
+	char dataInicial[15];
+	setbuf(stdin, NULL);
+	fgets(dataInicial, 15, stdin);
+	fprintf(p_contrato, "Data Inicial da Hospedagem: ");
+	fprintf(p_contrato, "%s", dataInicial);
 	fclose(p_contrato);
 	printf("Adicionado ao Contrato!\n");
 }

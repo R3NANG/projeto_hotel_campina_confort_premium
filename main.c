@@ -6,11 +6,18 @@
 #include "babysitter.h"
 #include "alugueldecarro.h"
 
+void cabecalho() {
+	system("cls");
+	printf("===================================\n");
+	printf("   HOTEL CAMPINA CONFORT PREMIUM\n");
+	printf("===================================\n");
+}
+
 main() {
 	login();
 	int op1, altatemp, qntdenoites;
 	float soma1, soma2, soma3;
-	char dataInicial[15];
+	
 	do {
 		printf("1 - Check-in.");
 		printf("\n2 - Check-out.");
@@ -29,13 +36,8 @@ main() {
 					return 0;
 				}
 				
-				printf("\nDigite a Data Inicial da Hospedagem do Hospede (ex: 13/03/2019):\n");
-				setbuf(stdin, NULL);
-				fgets(dataInicial, 15, stdin);
-				fprintf(p_contrato, "Data Inicial da Hospedagem: %s", dataInicial);
-				
 				do {
-					printf("Digite a Quantidade de Noites que o Hospede ficara Hospedado:\n");
+					printf("\nDigite a Quantidade de Noites que o Hospede ficara Hospedado:\n");
 					scanf("%d", &qntdenoites);
 					if(qntdenoites <= 0) {
 						printf("Quantidade Invalida.\n");
@@ -77,7 +79,7 @@ main() {
 				fclose(p_contrato);
 				soma2 = babysitter(altatemp, qntdenoites);
 				p_contrato = fopen("contratos.txt", "a");
-				fprintf(p_contrato, "Soma dos gastos com babysitter: %.2f\n\n", soma2);
+				fprintf(p_contrato, "Soma dos gastos com babysitter: %.2f\n", soma2);
 				fclose(p_contrato);
 				soma3 = alugueldecarro(altatemp, qntdenoites);
 				p_contrato = fopen("contratos.txt", "a");
