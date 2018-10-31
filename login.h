@@ -1,6 +1,8 @@
 #define TAM1 6
 #define TAM2 6
 
+void cabecalho();
+
 void login() {
 	char logindefinido[TAM1] = "admin";
 	char loginrecebido[TAM1];
@@ -9,10 +11,10 @@ void login() {
 	
 	do {
 		cabecalho();
-		printf("Pressione qualquer tecla para inserir informacoes de Login e Senha.\n");
+		printf("\nPressione qualquer tecla para inserir informacoes de Login e Senha.\n");
 		system("pause");
-		system("cls");
-		printf("Login: ");
+		cabecalho();
+		printf("\nLogin: ");
 		scanf("%s", loginrecebido);
 		printf("Senha: ");
 		scanf("%s", senharecebida);

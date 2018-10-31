@@ -1,5 +1,7 @@
 FILE *p_contrato;
 
+void cabecalho();
+
 int dados() {
 	p_contrato = fopen("contratos.txt", "a");
 	if(p_contrato == NULL) {
@@ -7,6 +9,7 @@ int dados() {
 		system("pause");
 		return 0;
 	}
+	cabecalho();
 	printf("\nDigite o Nome Completo do Hospede:\n");
 	char nome[100];
 	setbuf(stdin, NULL);
@@ -57,4 +60,5 @@ int dados() {
 	fprintf(p_contrato, "%s", dataInicial);
 	fclose(p_contrato);
 	printf("Adicionado ao Contrato!\n");
+	system("pause");
 }
