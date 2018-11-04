@@ -4,25 +4,26 @@ float babysitter(int altatemp, int qntdenoites) {
 	int horas[noitescontratadas];
 	float valor[noitescontratadas];
 	
+	cabecalho();
 	printf("\nDigite a Quantidade de Noites que o Hospede Contratara os Servicos de Babysitter:\n");
 	scanf("%d", &noitescontratadas);
 	
 	if(noitescontratadas < 0) {
 		printf("Quantidade Invalida!\n");
 		system("pause");
-		system("cls");
 		return babysitter(altatemp, qntdenoites);
 	}
 	
 	p_contrato = fopen("contratos.txt", "a");
 	if(p_contrato == NULL) {
-		printf("\nFalha na Criacao do Contrato!");
+		printf("\nFalha na Criacao do Contrato!\n");
 		system("pause");
 		return 0;
 	}
 				
 	if(noitescontratadas == 0) {
 		printf("Adicionado ao Contrato!\n");
+		system("pause");
 		fprintf(p_contrato, "Nao Foi Contratado Servicos de Babysitter.\n");
 		fclose(p_contrato);
 		return aux;
@@ -30,7 +31,8 @@ float babysitter(int altatemp, int qntdenoites) {
 	
 	if(noitescontratadas <= qntdenoites && noitescontratadas > 0) {
 		for(i = 0; i < noitescontratadas; i++) {
-			printf("Digite a Quantidade de Horas de Servico na Noite %d: ", cont);
+			cabecalho();
+			printf("\nDigite a Quantidade de Horas de Servico na Noite %d: ", cont);
 			scanf("%d", &horas[i]);
 			cont++;
 		}
@@ -53,12 +55,12 @@ float babysitter(int altatemp, int qntdenoites) {
 			aux += valor[i];
 		}
 		printf("Adicionado ao Contrato!\n");
+		system("pause");
 	}
 	
 	else {
 		printf("Quantidade Invalida!\n");
 		system("pause");
-		system("cls");
 		return babysitter(altatemp, qntdenoites);
 	}
 	fclose(p_contrato);

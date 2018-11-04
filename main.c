@@ -17,7 +17,7 @@ void cabecalho() {
 main() {
 	login();
 	int op1, altatemp, qntdenoites;
-	float soma1, soma2, soma3;
+	float soma1 = 0, soma2 = 0, soma3 = 0, somafinal = 0;
 	
 	do {
 		cabecalho();
@@ -33,7 +33,7 @@ main() {
 				dados();
 				p_contrato = fopen("contratos.txt", "a");
 				if(p_contrato == NULL) {
-					printf("\nFalha na Criacao do Contrato!");
+					printf("\nFalha na Criacao do Contrato!\n");
 					system("pause");
 					return 0;
 				}
@@ -79,16 +79,11 @@ main() {
 				fclose(p_contrato);
 				soma1 = quartos(altatemp);
 				soma1 *= qntdenoites;
-				p_contrato = fopen("contratos.txt", "a");
-				fprintf(p_contrato, "Soma dos gastos dos quartos: %.2f\n", soma1);
-				fclose(p_contrato);
 				soma2 = babysitter(altatemp, qntdenoites);
-				p_contrato = fopen("contratos.txt", "a");
-				fprintf(p_contrato, "Soma dos gastos com babysitter: %.2f\n", soma2);
-				fclose(p_contrato);
 				soma3 = alugueldecarro(altatemp, qntdenoites);
+				somafinal = soma1 + soma2 + soma3;
 				p_contrato = fopen("contratos.txt", "a");
-				fprintf(p_contrato, "Soma dos gastos com aluguel de carro: %.2f\n\n", soma3);
+				fprintf(p_contrato, "SOMA TOTAL: %.2f\n\n", somafinal);
 				fclose(p_contrato);
 				break;
 			case 2:
