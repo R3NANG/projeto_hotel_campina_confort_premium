@@ -1,14 +1,16 @@
 FILE *p_contrato;
 
+void cabecalho();
+
 int dados() {
 	p_contrato = fopen("contratos.txt", "a");
 	if(p_contrato == NULL) {
-		printf("\nFalha na Criacao do Contrato!\n");
+		printf("\nFalha na Criacao do Contrato!");
 		system("pause");
 		return 0;
 	}
 	
-	struct dados {
+	typedef struct dados {
 		char cpf[16];
 		char nome[100];
 		char endereco[150];
@@ -17,9 +19,9 @@ int dados() {
 		char validadedocartao[15];
 		char codigodeseguranca[10];
 		char dataInicial[15];
-	};
+	}HOSPEDE;
 	
-	struct dados recebimento;
+	HOSPEDE recebimento;
 	
 	cabecalho();
 	printf("\nDigite o CPF do Hospede (ex: 952.268.050-80):\n");

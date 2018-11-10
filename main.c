@@ -24,8 +24,9 @@ main() {
 			cabecalho();
 			printf("\n1 - Check-in.\n");
 			printf("2 - Check-out.\n");
-			printf("3 - Pesquisa de Contrato.\n");
-			printf("4 - Sair do Programa.\n");
+			printf("3 - Listar Contratos.\n");
+			printf("4 - Pesquisar Contrato.\n");
+			printf("5 - Sair do Programa.\n");
 			printf("Qual opcao voce deseja?: ");
 			scanf("%d", &op1);
 		
@@ -102,6 +103,9 @@ main() {
 					printf("slaoqtb");
 					break;
 				case 4:
+					printf("slaoqtb2");
+					break;
+				case 5:
 					printf("\nPrograma Encerrado.\n");
 					system("pause");
 					return 0;

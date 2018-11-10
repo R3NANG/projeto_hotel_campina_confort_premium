@@ -11,7 +11,14 @@ float quartos(int altatemp) {
 	fscanf(p_qntdequartos, "%d %d %d %d %d %d %d", &p, &ls, &ld, &lt, &es, &ed, &et);
 	fclose(p_qntdequartos);
 	int quantidadeDeQuartos, op1, op2, cont;
-	float aux1 = 0, aux2 = 0, aux3 = 0, aux4 = 0, aux5 = 0, aux6 = 0, aux7 = 0, aux11 = 0, aux22 = 0, aux33 = 0, aux44 = 0, aux55 = 0, aux66 = 0, aux77 = 0, auxfinal = 0;
+	
+	typedef struct valor {
+		float aux1, aux2, aux3, aux4, aux5, aux6, aux7, aux11, aux22, aux33, aux44, aux55, aux66, aux77, auxfinal;
+	}QUARTOS;
+	
+	QUARTOS recebido;
+	
+	recebido.aux1 = 0, recebido.aux2 = 0, recebido.aux3 = 0, recebido.aux4 = 0, recebido.aux5 = 0, recebido.aux6 = 0, recebido.aux7 = 0, recebido.auxfinal = 0;
 	p_contrato = fopen("contratos.txt", "a");
 	if(p_contrato == NULL) {
 		printf("\nFalha na Criacao do Contrato!\n");
@@ -33,7 +40,7 @@ float quartos(int altatemp) {
 					system("pause");
 					return 0;
 				}
-				aux11 = 0, aux22 = 0, aux33 = 0, aux44 = 0, aux55 = 0, aux66 = 0, aux77 = 0;
+				recebido.aux11 = 0, recebido.aux22 = 0, recebido.aux33 = 0, recebido.aux44 = 0, recebido.aux55 = 0, recebido.aux66 = 0, recebido.aux77 = 0;
 				printf("\nDigite o Tipo do Quarto %d\n", cont);
 				printf("Quantidade de Quartos Disponiveis:\n");
 				printf("| Presidencial: %d | Luxo Simples: %d | Luxo Duplo: %d | Luxo Triplo: %d |\n| Executivo Simples: %d | Executivo Duplo: %d | Executivo Triplo: %d |\n", p, ls, ld, lt, es, ed, et);
@@ -54,11 +61,11 @@ float quartos(int altatemp) {
 							if(p > 0) {
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								aux1 = 1200 * 1.25;
-								aux11 = aux1;
-								aux1 = 0;
+								recebido.aux1 = 1200 * 1.25;
+								recebido.aux11 = recebido.aux1;
+								recebido.aux1 = 0;
 								p--;
-								fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux11);
+								fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", recebido.aux11);
 								fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 								fclose(p_qntdequartos);
 							}
@@ -72,11 +79,11 @@ float quartos(int altatemp) {
 							if(p > 0) {
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								aux1 = 1200;
-								aux11 = aux1;
-								aux1 = 0;
+								recebido.aux1 = 1200;
+								recebido.aux11 = recebido.aux1;
+								recebido.aux1 = 0;
 								p--;
-								fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", aux11);
+								fprintf(p_contrato, "Quarto Presidencial no Valor de: %.2f\n", recebido.aux11);
 								fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 								fclose(p_qntdequartos);
 							}
@@ -99,11 +106,11 @@ float quartos(int altatemp) {
 										if(ls > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux2 = 520 * 1.25;
-											aux22 = aux2;
-											aux2 = 0;
+											recebido.aux2 = 520 * 1.25;
+											recebido.aux22 = recebido.aux2;
+											recebido.aux2 = 0;
 											ls--;
-											fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux22);
+											fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", recebido.aux22);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -117,11 +124,11 @@ float quartos(int altatemp) {
 										if(ls > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux2 = 520;
-											aux22 = aux2;
-											aux2 = 0;
+											recebido.aux2 = 520;
+											recebido.aux22 = recebido.aux2;
+											recebido.aux2 = 0;
 											ls--;
-											fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", aux22);
+											fprintf(p_contrato, "Quarto de Luxo Simples COM Cama Adicional no Valor de: %.2f\n", recebido.aux22);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -137,11 +144,11 @@ float quartos(int altatemp) {
 										if(ls > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux2 = 520 * 1.25;
-											aux22 = aux2;
-											aux2 = 0;
+											recebido.aux2 = 520 * 1.25;
+											recebido.aux22 = recebido.aux2;
+											recebido.aux2 = 0;
 											ls--;
-											fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux22);
+											fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", recebido.aux22);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -155,11 +162,11 @@ float quartos(int altatemp) {
 										if(ls > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux2 = 520;
-											aux22 = aux2;
-											aux2 = 0;
+											recebido.aux2 = 520;
+											recebido.aux22 = recebido.aux2;
+											recebido.aux2 = 0;
 											ls--;
-											fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", aux22);
+											fprintf(p_contrato, "Quarto de Luxo Simples SEM Cama Adicional no Valor de: %.2f\n", recebido.aux22);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -189,11 +196,11 @@ float quartos(int altatemp) {
 										if(ld > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux3 = 570 * 1.25;
-											aux33 = aux3;
-											aux3 = 0;
+											recebido.aux3 = 570 * 1.25;
+											recebido.aux33 = recebido.aux3;
+											recebido.aux3 = 0;
 											ld--;
-											fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux33);
+											fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux33);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -207,11 +214,11 @@ float quartos(int altatemp) {
 										if(ld > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux3 = 570;
-											aux33 = aux3;
-											aux3 = 0;
+											recebido.aux3 = 570;
+											recebido.aux33 = recebido.aux3;
+											recebido.aux3 = 0;
 											ld--;
-											fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", aux33);
+											fprintf(p_contrato, "Quarto de Luxo Duplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux33);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -227,11 +234,11 @@ float quartos(int altatemp) {
 										if(ld > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux3 = 570 * 1.25;
-											aux33 = aux3;
-											aux3 = 0;
+											recebido.aux3 = 570 * 1.25;
+											recebido.aux33 = recebido.aux3;
+											recebido.aux3 = 0;
 											ld--;
-											fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux33);
+											fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux33);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -245,11 +252,11 @@ float quartos(int altatemp) {
 										if(ld > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux3 = 570;
-											aux33 = aux3;
-											aux3 = 0;
+											recebido.aux3 = 570;
+											recebido.aux33 = recebido.aux3;
+											recebido.aux3 = 0;
 											ld--;
-											fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux33);
+											fprintf(p_contrato, "Quarto de Luxo Duplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux33);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -279,11 +286,11 @@ float quartos(int altatemp) {
 										if(lt > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux4 = 620 * 1.25;
-											aux44 = aux4;
-											aux4 = 0;
+											recebido.aux4 = 620 * 1.25;
+											recebido.aux44 = recebido.aux4;
+											recebido.aux4 = 0;
 											lt--;
-											fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux44);
+											fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux44);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -297,11 +304,11 @@ float quartos(int altatemp) {
 										if(lt > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux4 = 620;
-											aux44 = aux4;
-											aux4 = 0;
+											recebido.aux4 = 620;
+											recebido.aux44 = recebido.aux4;
+											recebido.aux4 = 0;
 											lt--;
-											fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", aux44);
+											fprintf(p_contrato, "Quarto de Luxo Triplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux44);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -317,11 +324,11 @@ float quartos(int altatemp) {
 										if(lt > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux4 = 620 * 1.25;
-											aux44 = aux4;
-											aux4 = 0;
+											recebido.aux4 = 620 * 1.25;
+											recebido.aux44 = recebido.aux4;
+											recebido.aux4 = 0;
 											lt--;
-											fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux44);
+											fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux44);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -335,11 +342,11 @@ float quartos(int altatemp) {
 										if(lt > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux4 = 620;
-											aux44 = aux4;
-											aux4 = 0;
+											recebido.aux4 = 620;
+											recebido.aux44 = recebido.aux4;
+											recebido.aux4 = 0;
 											lt--;
-											fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", aux44);
+											fprintf(p_contrato, "Quarto de Luxo Triplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux44);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -369,11 +376,11 @@ float quartos(int altatemp) {
 										if(es > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux5 = 360 * 1.25;
-											aux55 = aux5;
-											aux5 = 0;
+											recebido.aux5 = 360 * 1.25;
+											recebido.aux55 = recebido.aux5;
+											recebido.aux5 = 0;
 											es--;
-											fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux55);
+											fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", recebido.aux55);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -387,11 +394,11 @@ float quartos(int altatemp) {
 										if(es > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux5 = 360;
-											aux55 = aux5;
-											aux5 = 0;
+											recebido.aux5 = 360;
+											recebido.aux55 = recebido.aux5;
+											recebido.aux5 = 0;
 											es--;
-											fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", aux55);
+											fprintf(p_contrato, "Quarto Executivo Simples COM Cama Adicional no Valor de: %.2f\n", recebido.aux55);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -407,11 +414,11 @@ float quartos(int altatemp) {
 										if(es > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux5 = 360 * 1.25;
-											aux55 = aux5;
-											aux5 = 0;
+											recebido.aux5 = 360 * 1.25;
+											recebido.aux55 = recebido.aux5;
+											recebido.aux5 = 0;
 											es--;
-											fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux55);
+											fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", recebido.aux55);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -425,11 +432,11 @@ float quartos(int altatemp) {
 										if(es > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux5 = 360;
-											aux55 = aux5;
-											aux5 = 0;
+											recebido.aux5 = 360;
+											recebido.aux55 = recebido.aux5;
+											recebido.aux5 = 0;
 											es--;
-											fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", aux55);
+											fprintf(p_contrato, "Quarto Executivo Simples SEM Cama Adicional no Valor de: %.2f\n", recebido.aux55);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -459,11 +466,11 @@ float quartos(int altatemp) {
 										if(ed > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux6 = 385 * 1.25;
-											aux66 = aux6;
-											aux6 = 0;
+											recebido.aux6 = 385 * 1.25;
+											recebido.aux66 = recebido.aux6;
+											recebido.aux6 = 0;
 											ed--;
-											fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux66);
+											fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux66);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -477,11 +484,11 @@ float quartos(int altatemp) {
 										if(ed > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux6 = 385;
-											aux66 = aux6;
-											aux6 = 0;
+											recebido.aux6 = 385;
+											recebido.aux66 = recebido.aux6;
+											recebido.aux6 = 0;
 											ed--;
-											fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", aux66);
+											fprintf(p_contrato, "Quarto Executivo Duplo COM Cama Adicional no Valor de: %.2f\n", recebido.aux66);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -497,11 +504,11 @@ float quartos(int altatemp) {
 										if(ed > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux6 = 385 * 1.25;
-											aux66 = aux6;
-											aux6 = 0;
+											recebido.aux6 = 385 * 1.25;
+											recebido.aux66 = recebido.aux6;
+											recebido.aux6 = 0;
 											ed--;
-											fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux66);
+											fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux66);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -515,11 +522,11 @@ float quartos(int altatemp) {
 										if(ed > 0) {
 											printf("Adicionado ao Contrato!\n");
 											system("pause");
-											aux6 = 385;
-											aux66 = aux6;
-											aux6 = 0;
+											recebido.aux6 = 385;
+											recebido.aux66 = recebido.aux6;
+											recebido.aux6 = 0;
 											ed--;
-											fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", aux66);
+											fprintf(p_contrato, "Quarto Executivo Duplo SEM Cama Adicional no Valor de: %.2f\n", recebido.aux66);
 											fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 											fclose(p_qntdequartos);
 										}
@@ -542,11 +549,11 @@ float quartos(int altatemp) {
 							if(et > 0) {
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								aux7 = 440 * 1.25;
-								aux77 = aux7;
-								aux7 = 0;
+								recebido.aux7 = 440 * 1.25;
+								recebido.aux77 = recebido.aux7;
+								recebido.aux7 = 0;
 								et--;
-								fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux77);
+								fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", recebido.aux77);
 								fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 								fclose(p_qntdequartos);
 							}
@@ -560,11 +567,11 @@ float quartos(int altatemp) {
 							if(et > 0) {
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								aux7 = 440;
-								aux77 = aux7;
-								aux7 = 0;
+								recebido.aux7 = 440;
+								recebido.aux77 = recebido.aux7;
+								recebido.aux7 = 0;
 								et--;
-								fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", aux77);
+								fprintf(p_contrato, "Quarto Executivo Triplo no Valor de: %.2f\n", recebido.aux77);
 								fprintf(p_qntdequartos, "%d %d %d %d %d %d %d", p, ls, ld, lt, es, ed, et);
 								fclose(p_qntdequartos);
 							}
@@ -582,7 +589,7 @@ float quartos(int altatemp) {
 						system("cls");
 						break;
 				}
-				auxfinal += aux11 + aux22 + aux33 + aux44 + aux55 + aux66 + aux77;
+				recebido.auxfinal += recebido.aux11 + recebido.aux22 + recebido.aux33 + recebido.aux44 + recebido.aux55 + recebido.aux66 + recebido.aux77;
 			}
 		}
 		else {
@@ -591,5 +598,5 @@ float quartos(int altatemp) {
 		}
 	} while(quantidadeDeQuartos < 1);
 	fclose(p_contrato);
-	return auxfinal;
+	return recebido.auxfinal;
 }

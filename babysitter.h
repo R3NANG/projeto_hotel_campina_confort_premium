@@ -1,9 +1,15 @@
 float babysitter(int altatemp, int qntdenoites) {
 	int noitescontratadas, i, cont = 1;
-	float aux = 0;
-	int horas[noitescontratadas];
-	float valor[noitescontratadas];
 	
+	typedef struct babysitter {
+		float aux;
+		int horas[noitescontratadas];
+		float valor[noitescontratadas];
+	}VARIAVEIS;
+	
+	VARIAVEIS recebido;
+	
+	recebido.aux = 0;
 	cabecalho();
 	printf("\nDigite a Quantidade de Noites que o Hospede Contratara os Servicos de Babysitter:\n");
 	scanf("%d", &noitescontratadas);
@@ -26,33 +32,35 @@ float babysitter(int altatemp, int qntdenoites) {
 		system("pause");
 		fprintf(p_contrato, "Nao Foi Contratado Servicos de Babysitter.\n");
 		fclose(p_contrato);
-		return aux;
+		return recebido.aux;
 	}
 	
 	if(noitescontratadas <= qntdenoites && noitescontratadas > 0) {
 		for(i = 0; i < noitescontratadas; i++) {
 			cabecalho();
 			printf("\nDigite a Quantidade de Horas de Servico na Noite %d: ", cont);
-			scanf("%d", &horas[i]);
+			setbuf(stdin, NULL);
+			scanf("%d", &recebido.horas[i]);
+			setbuf(stdin, NULL);
 			cont++;
 		}
 		cont = 1;
 		
 		for(i = 0; i < noitescontratadas; i++) {
 			if(altatemp == 1) {
-				valor[i] = horas[i] * (45 * 1.25);
-				fprintf(p_contrato, "Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", cont, horas[i], valor[i]);
+				recebido.valor[i] = recebido.horas[i] * (45 * 1.25);
+				fprintf(p_contrato, "Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", cont, recebido.horas[i], recebido.valor[i]);
 				cont++;
 			}
 			if(altatemp == 2) {
-				valor[i] = horas[i] * 45;
-				fprintf(p_contrato, "Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", cont, horas[i], valor[i]);
+				recebido.valor[i] = recebido.horas[i] * 45;
+				fprintf(p_contrato, "Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", cont, recebido.horas[i], recebido.valor[i]);
 				cont++;
 			}
 		}
 		
 		for(i = 0; i < noitescontratadas; i++) {
-			aux += valor[i];
+			recebido.aux += recebido.valor[i];
 		}
 		printf("Adicionado ao Contrato!\n");
 		system("pause");
@@ -64,5 +72,5 @@ float babysitter(int altatemp, int qntdenoites) {
 		return babysitter(altatemp, qntdenoites);
 	}
 	fclose(p_contrato);
-	return aux;
+	return recebido.aux;
 }
