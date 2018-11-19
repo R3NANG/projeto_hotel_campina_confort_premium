@@ -7,6 +7,8 @@
 #include "babysitter.h"
 #include "alugueldecarro.h"
 
+FILE *tamanhodocontrato;
+
 void cabecalho() {
 	system("cls");
 	printf("===================================\n");
@@ -16,8 +18,9 @@ void cabecalho() {
 
 main() {
 	login();
-	int op1, altatemp, qntdenoites;
-	float soma1 = 0, soma2 = 0, soma3 = 0;
+	int op1 = 0, altatemp = 0, qntdenoites = 0, tamContrato = 0;
+	float soma1 = 0, soma2 = 0, soma3 = 0, somafinal = 0;
+	char listarContratos[tamContrato];
 	
 	while(1) {
 		do {
@@ -83,24 +86,33 @@ main() {
 					soma1 *= qntdenoites;
 					soma2 = babysitter(altatemp, qntdenoites);
 					soma3 = alugueldecarro(altatemp, qntdenoites);
-					
-					struct final {
-						float somafinal;
-					};
-					
-					struct final soma;
-					
-					soma.somafinal = soma1 + soma2 + soma3;
-					
+					somafinal = soma1 + soma2 + soma3;
+					tamanhodocontrato = fopen("tamanhodocontrato.txt", "r");
+					fscanf(tamanhodocontrato, "%d", &tamContrato);
+					fclose(tamanhodocontrato);
+					tamContrato += 1000;
+					tamanhodocontrato = fopen("tamanhodocontrato.txt", "w");
+					fprintf(tamanhodocontrato, "%d", tamContrato);
+					fclose(tamanhodocontrato);
 					p_contrato = fopen("contratos.txt", "a");
-					fprintf(p_contrato, "SOMA TOTAL: %.2f\n\n", soma.somafinal);
+					fprintf(p_contrato, "SOMA TOTAL: %.2f\n", somafinal);
+					fprintf(p_contrato, "Status do Contrato: [ABERTO]\n\n");
 					fclose(p_contrato);
 					break;
 				case 2:
 					printf("slaoq");
 					break;
 				case 3:
-					printf("slaoqtb");
+					tamanhodocontrato = fopen("tamanhodocontrato.txt", "r");
+					fscanf(tamanhodocontrato, "%d", &tamContrato);
+					fclose(tamanhodocontrato);
+					p_contrato = fopen("contratos.txt", "r");
+					printf("\n");
+					while(fgets(listarContratos, tamContrato, p_contrato) != NULL) {
+						printf("%s", listarContratos);
+					}
+					fclose(p_contrato);
+					system("pause");
 					break;
 				case 4:
 					printf("slaoqtb2");
@@ -115,6 +127,6 @@ main() {
 					system("pause");
 					break;
 			}
-		} while(op1 < 1 || op1 > 4);
+		} while(op1 < 1 || op1 > 5);
 	}
 }
