@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "login.h"
-#include "dados.h"
-#include "quartos.h"
-#include "babysitter.h"
-#include "alugueldecarro.h"
+#include "funcoes.h"
 
 FILE *tamanhodocontrato;
 
@@ -17,8 +13,8 @@ void cabecalho() {
 }
 
 main() {
-	login();
-	int op1 = 0, altatemp = 0, qntdenoites = 0, tamContrato = 0;
+	//login();
+	int op1 = 0, op2 = 0, tamContrato = 0, i = 0;
 	float soma1 = 0, soma2 = 0, soma3 = 0, somafinal = 0;
 	char listarContratos[tamContrato];
 	
@@ -35,57 +31,56 @@ main() {
 		
 			switch(op1) {
 				case 1:
-					dados();
-					p_contrato = fopen("contratos.txt", "a");
-					if(p_contrato == NULL) {
-						printf("\nFalha na Criacao do Contrato!\n");
-						system("pause");
-						return 0;
-					}
+					//recebimento = dadoscliente(recebimento);
 					
 					do {
 						cabecalho();
 						printf("\nDigite a Quantidade de Noites que o Hospede ficara Hospedado:\n");
-						scanf("%d", &qntdenoites);
-						if(qntdenoites <= 0) {
+						scanf("%d", &recebimento.qntdenoites);
+						if(recebimento.qntdenoites <= 0) {
 							printf("Quantidade Invalida.\n");
 							system("pause");
 						}
 						else {
-							fprintf(p_contrato, "Quantidade de Noites Hospedado: %d\n", qntdenoites);
 							printf("Adicionado ao Contrato!\n");
 							system("pause");
 						}
-					} while(qntdenoites <= 0);
-						
+					} while(recebimento.qntdenoites <= 0);
+					
 					do {
 						cabecalho();
 						printf("\nO Hospede Deseja se Hospedar em Epoca de Alta Estacao? (ex: Natal, Reveillon, etc.)\n");
 						printf("1 - Sim / 2 - Nao: ");
-						scanf("%d", &altatemp);
-						switch(altatemp) {
+						scanf("%d", &recebimento.altatemp);
+						switch(recebimento.altatemp) {
 							case 1:
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								fprintf(p_contrato, "Hospede Hospedado em Epoca de Alta Estacao.\n");
 								break;
 							case 2:
 								printf("Adicionado ao Contrato!\n");
 								system("pause");
-								fprintf(p_contrato, "Hospede Hospedado em Epoca Normal.\n");
 								break;
 							default:
 								printf("Opcao Invalida.\n");
 								system("pause");
 								break;
 						}
-					} while(altatemp < 1 || altatemp > 2);
+					} while(recebimento.altatemp < 1 || recebimento.altatemp > 2);
 					
+					//recebimento = quartos(recebimento);
+					recebimento = babysitter(recebimento);
+					
+					p_contrato = fopen("contratos.dat", "a");
+					if(p_contrato == NULL) {
+						printf("\nFalha na Criacao do Contrato!\n");
+						system("pause");
+						return 0;
+					}
+					fwrite(&recebimento, sizeof(HOSPEDE), 1, p_contrato);
 					fclose(p_contrato);
-					soma1 = quartos(altatemp);
-					soma1 *= qntdenoites;
-					soma2 = babysitter(altatemp, qntdenoites);
-					soma3 = alugueldecarro(altatemp, qntdenoites);
+					return 0;
+					/*soma3 = alugueldecarro(altatemp, qntdenoites);
 					somafinal = soma1 + soma2 + soma3;
 					tamanhodocontrato = fopen("tamanhodocontrato.txt", "r");
 					fscanf(tamanhodocontrato, "%d", &tamContrato);
@@ -94,25 +89,30 @@ main() {
 					tamanhodocontrato = fopen("tamanhodocontrato.txt", "w");
 					fprintf(tamanhodocontrato, "%d", tamContrato);
 					fclose(tamanhodocontrato);
-					p_contrato = fopen("contratos.txt", "a");
+					p_contrato = fopen("contratos.dat", "a");
 					fprintf(p_contrato, "SOMA TOTAL: %.2f\n", somafinal);
 					fprintf(p_contrato, "Status do Contrato: [ABERTO]\n\n");
-					fclose(p_contrato);
+					fclose(p_contrato);*/
 					break;
 				case 2:
-					printf("slaoq");
+					/*p_contrato = fopen("contratos.dat", "r");
+					printf("\n");
+					while(fread(&recebimento, sizeof(HOSPEDE), 1, p_contrato)) {
+        				printf("CPF: %s", recebimento.cpf);
+        				printf("Nome: %s", recebimento.nome);
+        				printf("Endereco de Residencia: %s", recebimento.endereco);
+        				printf("Bandeira do Cartao de Credito: %s", recebimento.tipodocartao);
+        				printf("Numero do Cartao (CVV): %s", recebimento.numerodocartao);
+        				printf("Validade do Cartao: %s", recebimento.validadedocartao);
+        				printf("Codigo de Seguranca do Cartao: %s", recebimento.codigodeseguranca);
+        				printf("Data Inicial da Hospedagem: %s\n", recebimento.dataInicial);
+    				}
+    				fclose(p_contrato);
+    				system("pause");*/
 					break;
 				case 3:
-					tamanhodocontrato = fopen("tamanhodocontrato.txt", "r");
-					fscanf(tamanhodocontrato, "%d", &tamContrato);
-					fclose(tamanhodocontrato);
-					p_contrato = fopen("contratos.txt", "r");
-					printf("\n");
-					while(fgets(listarContratos, tamContrato, p_contrato) != NULL) {
-						printf("%s", listarContratos);
-					}
-					fclose(p_contrato);
-					system("pause");
+					listarcontratos(recebimento);
+    				system("pause");
 					break;
 				case 4:
 					printf("slaoqtb2");
