@@ -1,4 +1,5 @@
 void listarcontratos(HOSPEDE recebimento) {
+	int i = 0, cont = 1;
 	p_contrato = fopen("contratos.dat", "r");
 	printf("\n");
 	while(fread(&recebimento, sizeof(HOSPEDE), 1, p_contrato)) {
@@ -109,23 +110,30 @@ void listarcontratos(HOSPEDE recebimento) {
 			}
 			else printf("Quarto Executivo Triplo no Valor de: %.2f\n", recebimento.q_executivoT);
 		}
-		recebimento.gastosQuartos += recebimento.q_presidencial + recebimento.q_luxoS + recebimento.q_luxoD + recebimento.q_luxoT + recebimento.q_executivoS + recebimento.q_executivoD + recebimento.q_executivoT;
-		recebimento.gastosQuartos *= recebimento.qntdenoites;
-		printf("Gastos com os Quartos: %.2f\n", recebimento.gastosQuartos);
-		recebimento.contadorBabysitter2 = 1;
-		for(recebimento.contadorBabysitter = 0; recebimento.contadorBabysitter < recebimento.babysitterNoites; recebimento.contadorBabysitter++) {
-			if(recebimento.altatemp == 1) {
-				printf("Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", recebimento.contadorBabysitter2, recebimento.horas[recebimento.contadorBabysitter], recebimento.valor[recebimento.contadorBabysitter]);
-				recebimento.contadorBabysitter2++;
-			}
-			if(recebimento.altatemp == 2) {
-				recebimento.valor[recebimento.contadorBabysitter] = recebimento.horas[recebimento.contadorBabysitter] * 45;
-				printf("Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", recebimento.contadorBabysitter2, recebimento.horas[recebimento.contadorBabysitter], recebimento.valor[recebimento.contadorBabysitter]);
-				recebimento.contadorBabysitter2++;
+		if(recebimento.babysitterNoites == 0) printf("Nao Foi Contratado Servicos de Babysitter.\n");
+		else {
+			for(i = 0; i < recebimento.babysitterNoites; i++) {
+				printf("Servico de Babysitter na Noite %d: %dhrs no Valor de R$:%.2f\n", cont, recebimento.horas[i], recebimento.valor[i]);
+				cont++;
 			}
 		}
-		printf("Gastos com a Babysitter: %.2f\n", recebimento.gastosBabysitter);
-		printf("\n");
+		cont = 1;
+		if(recebimento.carrosNoites == 0) printf("Nao Foi Contratado Servicos de Aluguel de Carro.\n");
+		else {
+			for(i = 0; i < recebimento.carrosNoites; i++) {
+				if(recebimento.tipoDeCarro[i] == 100 * 1.25 || recebimento.tipoDeCarro[i] == 100) printf("Servico de Aluguel de Automovel de Luxo na Noite %d no Valor de R$:%.2f\n", cont, recebimento.tipoDeCarro[i]);
+				if(recebimento.tipoDeCarro[i] == 60 * 1.25 || recebimento.tipoDeCarro[i] == 60) printf("Servico de Aluguel de Automovel Executivo na Noite %d no Valor de R$:%.2f\n", cont, recebimento.tipoDeCarro[i]);
+				if(recebimento.tanqueCheio[i] == 300 * 1.25 || recebimento.tanqueCheio[i] == 300) printf("Servico de Tanque Cheio na Noite %d no Valor de R$:%.2f\n", cont, recebimento.tanqueCheio[i]);
+				else printf("Nao foi Contratado Servico de Tanque Cheio na Noite %d\n", cont);
+				if(recebimento.carroAssegurado[i] == 250 * 1.25 || recebimento.carroAssegurado[i] == 250) printf("Servico de Carro Assegurado na Noite %d no Valor de R$:%.2f\n", cont, recebimento.carroAssegurado[i]);
+				else printf("Nao foi Contratado Servico de Carro Assegurado na Noite %d\n", cont);
+				cont++;
+			}
+		}
+		printf("Gastos Totais: %.2f\n", recebimento.gastosTotais);
+		if(recebimento.statusContrato == 1) printf("Status do Contrato: [ABERTO]\n\n");
+		else printf("Status do Contrato: [FECHADO]\n\n");
     }
     fclose(p_contrato);
+    system("pause");
 }

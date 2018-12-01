@@ -26,11 +26,16 @@ typedef struct dados {
 	float q_executivoT;
 	float gastosQuartos;
 	int babysitterNoites;
-	int contadorBabysitter;
-	int contadorBabysitter2;
-	int horas[babysitterNoites];
-	float valor[babysitterNoites];
+	int horas[20];
+	float valor[20];
 	float gastosBabysitter;
+	int carrosNoites;
+	float tipoDeCarro[20];
+	float tanqueCheio[20];
+	float carroAssegurado[20];
+	float gastosAluguelDeCarro;
+	float gastosTotais;
+	int statusContrato;
 } HOSPEDE;
 
 HOSPEDE recebimento;

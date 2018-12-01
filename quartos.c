@@ -539,5 +539,7 @@ HOSPEDE quartos(struct dados HOSPEDE) {
 			}
 		} while(recebimento.quantidadeDeQuartos < 0);
 	} while(recebimento.seQuartosIguais < 1 || recebimento.seQuartosIguais > 2);
+	recebimento.gastosQuartos += recebimento.q_presidencial + recebimento.q_luxoS + recebimento.q_luxoD + recebimento.q_luxoT + recebimento.q_executivoS + recebimento.q_executivoD + recebimento.q_executivoT;
+	recebimento.gastosQuartos *= recebimento.qntdenoites;
 	return recebimento;
 }

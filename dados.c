@@ -28,5 +28,40 @@ HOSPEDE dadoscliente(HOSPEDE recebimento) {
 	fgets(recebimento.dataInicial, 15, stdin);
 	printf("Adicionado ao Contrato!\n");
 	system("pause");
+	
+	do {
+		cabecalho();
+		printf("\nDigite a Quantidade de Noites que o Hospede ficara Hospedado:\n");
+		scanf("%d", &recebimento.qntdenoites);
+		if(recebimento.qntdenoites <= 0) {
+			printf("Quantidade Invalida.\n");
+			system("pause");
+		}
+		else {
+			printf("Adicionado ao Contrato!\n");
+			system("pause");
+		}
+	} while(recebimento.qntdenoites <= 0);
+					
+	do {
+		cabecalho();
+		printf("\nO Hospede Deseja se Hospedar em Epoca de Alta Estacao? (ex: Natal, Reveillon, etc.)\n");
+		printf("1 - Sim / 2 - Nao: ");
+		scanf("%d", &recebimento.altatemp);
+		switch(recebimento.altatemp) {
+			case 1:
+				printf("Adicionado ao Contrato!\n");
+				system("pause");
+				break;
+			case 2:
+				printf("Adicionado ao Contrato!\n");
+				system("pause");
+				break;
+			default:
+				printf("Opcao Invalida.\n");
+				system("pause");
+				break;
+		}
+	} while(recebimento.altatemp < 1 || recebimento.altatemp > 2);
 	return recebimento;
 }
