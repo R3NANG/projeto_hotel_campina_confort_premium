@@ -31,6 +31,10 @@ main() {
 		
 			switch(op1) {
 				case 1:
+					recebimento.q_presidencial = 0, recebimento.q_luxoS = 0, recebimento.q_luxoD = 0, recebimento.q_luxoT = 0, recebimento.q_executivoS = 0, recebimento.q_executivoD = 0, recebimento.q_executivoT = 0;
+					recebimento.q_camaLuxoS = 3, recebimento.q_camaLuxoD = 3, recebimento.q_camaLuxoT = 3, recebimento.q_camaExecutivoS = 3, recebimento.q_camaExecutivoD = 3;
+					recebimento.gastosTotais = 0, recebimento.gastosQuartos = 0, recebimento.gastosBabysitter = 0, recebimento.gastosAluguelDeCarro = 0;
+					
 					recebimento = dadoscliente(recebimento);
 					recebimento = quartos(recebimento);
 					recebimento = babysitter(recebimento);

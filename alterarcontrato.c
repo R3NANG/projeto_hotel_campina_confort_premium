@@ -83,6 +83,7 @@ void alterarcontrato(HOSPEDE recebimento) {
 			if(op == 6) sprintf(recebimento.validadedocartao, "%s", alterarDados);
 			if(op == 7) sprintf(recebimento.codigodeseguranca, "%s", alterarDados);
 			if(op == 8) sprintf(recebimento.dataInicial, "%s", alterarDados);
+			printf("Dado Alterado com Sucesso!\n\n");
 			
 	    	printf("CPF: %s", recebimento.cpf);
 	    	printf("Nome: %s", recebimento.nome);
@@ -224,7 +225,7 @@ void alterarcontrato(HOSPEDE recebimento) {
 	if(aux == 0) {
 		printf("Hospede Nao Encontrado!\n");
 		system("pause");
-		return pesquisarcontrato(recebimento);
+		return alterarcontrato(recebimento);
 	}
 	fclose(p_contrato);
 }

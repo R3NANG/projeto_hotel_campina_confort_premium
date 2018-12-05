@@ -12,7 +12,7 @@ HOSPEDE alugueldecarro(HOSPEDE recebimento) {
 	}
 				
 	if(recebimento.carrosNoites == 0) {
-		printf("\nAdicionado ao Contrato!\n");
+		printf("Adicionado ao Contrato!\n");
 		system("pause");
 		return recebimento;
 	}

@@ -13,7 +13,7 @@ HOSPEDE babysitter(HOSPEDE recebimento) {
 	}
 				
 	if(recebimento.babysitterNoites == 0) {
-		printf("\nAdicionado ao Contrato!\n");
+		printf("Adicionado ao Contrato!\n");
 		system("pause");
 		return recebimento;
 	}
@@ -38,7 +38,7 @@ HOSPEDE babysitter(HOSPEDE recebimento) {
 		for(i = 0; i < recebimento.babysitterNoites; i++) {
 			recebimento.gastosBabysitter += recebimento.valor[i];
 		}
-		printf("\nAdicionado ao Contrato!\n");
+		printf("Adicionado ao Contrato!\n");
 		system("pause");
 	}
 	
